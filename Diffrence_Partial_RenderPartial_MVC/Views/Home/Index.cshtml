@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@*if you want to get data from partial view and want to add some other data for exempel we add a string "<h3>Here is Student List</h3>"
+    then we will use html.partial mathod
+*@
+<h3>Htmal.Partial View</h3>
+@{
+    var List = Html.Partial("_StudentList");
+    List = new MvcHtmlString("<h3>Here is Student List</h3>" + List.ToString());
+}
+@List
+
+@* we can call partial mathod out of curly brackets with adding string.
+*@
+<h3>Htmal.Partial View</h3>
+
+@Html.Partial("_StudentList")
+
+<h3>Html.RenderPartial View</h3>
+
+@{
+    Html.RenderPartial("_StudentList");
+}
+
+@*SIMILARITIES AND DIFFERENCE BETWEEN HTML.PARTIAL AND HTML.RENDERPARTIAL
+•	Both Html.Partial and Html.RenderPartial can be used to access or display a partial view in a view
+Html.Partial
+    Method that returns MVCHtmlString
+    Rendered Partial view result can be stored in string variable.
+    Slow in access becuse this method convert view in string and then return 
+Html.RenderPartial
+    Method without any return value, it means it returns void.
+    Rendered Partial view result cannot be stored in string variable.
+    Fast in access because this is not convert to string*@
